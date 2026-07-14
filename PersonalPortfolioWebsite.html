@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Max Tran</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e10;
+      --bg-surface: #16161a;
+      --bg-card: #1c1c22;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.14);
+      --text-primary: #f0f0f2;
+      --text-secondary: #8a8a99;
+      --text-muted: #55555f;
+      --accent: #7c6ff7;
+      --accent-soft: rgba(124,111,247,0.12);
+      --accent-border: rgba(124,111,247,0.3);
+      --green: #3ecf8e;
+      --green-soft: rgba(62,207,142,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 56px;
+      background: rgba(14,14,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* LAYOUT */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 6rem 0 3rem;
+    }
+
+    /* HERO */
+    #hero {
+      padding-top: 140px;
+      padding-bottom: 5rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-inner { width: 100%; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      color: var(--text-primary);
+    }
+
+    h1 span {
+      color: var(--text-muted);
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary:hover { background: #6b5ee6; transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    /* SECTION LABELS */
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .about-text {
+      grid-column: 1 / -1;
+      color: var(--text-secondary);
+      font-size: 15.5px;
+      line-height: 1.8;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .stat-card:hover { border-color: var(--border-hover); }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .skill-group:hover { border-color: var(--border-hover); }
+
+    .skill-group-label {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-tag {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .exp-card:hover { border-color: var(--border-hover); }
+    .exp-card:hover::before { opacity: 1; }
+
+    .exp-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-title { font-weight: 600; font-size: 15px; }
+
+    .exp-date {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .exp-bullets li {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .exp-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:hover { border-color: var(--border-hover); }
+
+    .project-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .project-metric {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--green);
+      background: var(--green-soft);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* RESUME */
+    .resume-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .resume-info h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .resume-info p {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text-primary); }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .about-grid, .projects-grid { grid-template-columns: 1fr; }
+      .resume-card { flex-direction: column; align-items: flex-start; }
+      nav { padding: 0 1rem; }
+      .container { padding: 0 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">mt.</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#resume">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-tag">Open to new opportunities</div>
+      <h1>Max Tran<br /><span>Biocomputational Engineer</span></h1>
+      <p class="hero-desc">
+        I build machine learning systems at the intersection of biology and computation — from deep learning models for physiological signal analysis to computer vision pipelines for biomedical imaging.
+      </p>
+      <div class="hero-actions">
+        <a href="https://github.com/maxtran04" target="_blank" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="mailto:[your.email@example.com]" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">// about</p>
+    <h2>Background</h2>
+    <div class="about-grid">
+      <p class="about-text">
+        I recently graduated from Lehigh University with a B.S. in Biocomputational Engineering. My work focuses on applying machine learning and deep learning to biomedical problems — particularly signal processing, medical imaging, and clinical decision support systems. I'm drawn to problems where data science can have a direct impact on healthcare outcomes.
+      </p>
+      <div class="stat-card">
+        <div class="stat-number">93%</div>
+        <div class="stat-label">Sensitivity achieved in stenosis detection model</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">90%</div>
+        <div class="stat-label">Sensitivity & specificity in skin cancer CNN</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">// skills</p>
+    <h2>Tech stack</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">ML / DL</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">scikit-learn</span>
+          <span class="skill-tag">CNNs</span>
+          <span class="skill-tag">SimCLR</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Data</div>
+        <div class="skill-tags">
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">Jupyter</span>
+          <span class="skill-tag">Minitab</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">// experience</p>
+    <h2>Work history</h2>
+    <div class="exp-list">
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Machine Learning Intern</div>
+            <div class="exp-company">X9, Inc — Wallingford, CT</div>
+          </div>
+          <div class="exp-date">May – Aug 2025</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Designed and trained deep learning models in PyTorch (CNN14, CNN6) for auscultation-based stenosis detection, achieving 93% sensitivity and 86% specificity</li>
+          <li>Built an end-to-end ML pipeline covering signal preprocessing, feature extraction, model training, validation, and evaluation</li>
+          <li>Implemented a SimCLR-style contrastive pretraining framework to enable strong performance in low-data regimes</li>
+          <li>Designed controlled experiments across architectures to evaluate robustness and generalization for clinical use</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Operations Intern</div>
+            <div class="exp-company">Revelle Aesthetics, Exploramed — Mountain View, CA</div>
+          </div>
+          <div class="exp-date">May – Aug 2023</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Analyzed manufacturing and testing data in Minitab to identify sources of error and improve process reliability</li>
+          <li>Developed a Python program using QR codes to transfer inventory data into Excel for automated tracking</li>
+          <li>Collaborated with operations leadership on forecasting and improving inventory and shipping workflows</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">// projects</p>
+    <h2>Selected work</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-title">Skin Cancer Detection via VOCT Imaging</div>
+        <p class="project-desc">CNN-based model to interpret Vibrational Optical Coherence Tomography data for noninvasive skin cancer detection. Applied transfer learning and data augmentation to improve generalization.</p>
+        <span class="project-metric">90% sensitivity &amp; specificity</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">Inventory Automation System</div>
+        <p class="project-desc">Python application to automate inventory collection and cataloging using QR codes, with automated data extraction and transfer into Excel for operational reporting.</p>
+        <span class="project-metric">Python · Jupyter · Excel</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="container">
+    <p class="section-label">// resume</p>
+    <h2>Download resume</h2>
+    <div class="resume-card">
+      <div class="resume-info">
+        <h3>Max Tran — Resume</h3>
+        <p>B.S. Biocomputational Engineering, Lehigh University 2026. Machine learning, deep learning, biomedical signal processing.</p>
+      </div>
+      <a href="[LINK_TO_YOUR_RESUME_PDF]" target="_blank" class="btn btn-primary">Download PDF</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-text">max tran © 2026</span>
+      <div class="footer-links">
+        <a href="https://github.com/maxtran04" target="_blank">GitHub</a>
+        <a href="mailto:[your.email@example.com]">Email</a>
+        <a href="https://linkedin.com/in/maxwell-tran" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
