@@ -7,15 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0N1KZGKH9P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0N1KZGKH9P');
-</script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -491,14 +482,14 @@
       <div class="hero-tag">Open to new opportunities</div>
       <h1>Max Tran<br /><span>Biocomputational Engineer</span></h1>
       <p class="hero-desc">
-        My background spans biology, machine learning, and healthcare technology. Whatever form my work takes, I'm driven by a simple goal: using that knowledge to improve the standard of care and make a real difference for patients worldwide.
+        I build machine learning systems at the intersection of biology and computation — from deep learning models for physiological signal analysis to computer vision pipelines for biomedical imaging.
       </p>
       <div class="hero-actions">
         <a href="https://github.com/maxtran04" target="_blank" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
         </a>
-        <a href="mailto:maxtran04@gmail.com" class="btn btn-ghost">Get in touch</a>
+        <a href="mailto:[your.email@example.com]" class="btn btn-ghost">Get in touch</a>
       </div>
     </div>
   </div>
@@ -513,7 +504,7 @@
     <h2>Background</h2>
     <div class="about-grid">
       <p class="about-text">
-        I recently graduated from Lehigh University with a B.S. in Biocomputational Engineering. My work focuses on applying machine learning and deep learning to biomedical problems, particularly signal processing, medical imaging, and clinical decision support systems. I'm drawn to problems where data science can have a direct impact on healthcare outcomes.
+        I recently graduated from Lehigh University with a B.S. in Biocomputational Engineering. My work focuses on applying machine learning and deep learning to biomedical problems — particularly signal processing, medical imaging, and clinical decision support systems. I'm drawn to problems where data science can have a direct impact on healthcare outcomes.
       </p>
       <div class="stat-card">
         <div class="stat-number">93%</div>
@@ -566,6 +557,7 @@
           <span class="skill-tag">Git</span>
           <span class="skill-tag">GitHub</span>
           <span class="skill-tag">Jupyter</span>
+          <span class="skill-tag">MATLAB</span>
           <span class="skill-tag">Minitab</span>
         </div>
       </div>
@@ -627,6 +619,30 @@
     <div class="projects-grid">
 
       <div class="project-card">
+        <div class="project-title">ECG Arrhythmia Classification</div>
+        <p class="project-desc">Built a complete ECG beat classification pipeline in MATLAB to detect ectopic heartbeats. Applied bandpass and derivative filtering for QRS detection, extracted morphological and temporal features, and compared unsupervised K-means clustering against a supervised SVM classifier.</p>
+        <span class="project-metric">MATLAB · SVM · K-means · Signal Processing</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">Automated Seizure Detection from EEG</div>
+        <p class="project-desc">Implemented Shoeb's supervised learning pipeline on the CHB-MIT EEG dataset for patient-specific seizure detection. Designed an 8-band filter bank, extracted log energy features across 18 channels, and trained a weighted SVM with leave-one-seizure-out cross-validation and post-processing to reduce false positives.</p>
+        <span class="project-metric">MATLAB · SVM · Filter Bank · EEG</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">Neural Decoding of Visual Stimuli</div>
+        <p class="project-desc">Decoded visual stimuli from 290 simultaneously recorded neurons in the Allen Brain Atlas dataset. Built three multi-class SVM classifiers to predict grating orientation, temporal frequency, and their combination from neural fluorescence traces, validating each against shuffled baselines to confirm genuine learned representations.</p>
+        <span class="project-metric">MATLAB · Multi-class SVM · 290 Neurons · 41 Classes</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">Deep Learning for Stenosis Detection</div>
+        <p class="project-desc">Designed and trained CNN14 and CNN6 deep learning models in PyTorch on physiological auscultation signal data for noninvasive stenosis detection. Implemented a SimCLR-style contrastive pretraining framework to enable strong performance in low-data clinical regimes.</p>
+        <span class="project-metric">93% sensitivity · 86% specificity</span>
+      </div>
+
+      <div class="project-card">
         <div class="project-title">Skin Cancer Detection via VOCT Imaging</div>
         <p class="project-desc">CNN-based model to interpret Vibrational Optical Coherence Tomography data for noninvasive skin cancer detection. Applied transfer learning and data augmentation to improve generalization.</p>
         <span class="project-metric">90% sensitivity &amp; specificity</span>
@@ -663,7 +679,7 @@
         <h3>Max Tran — Resume</h3>
         <p>B.S. Biocomputational Engineering, Lehigh University 2026. Machine learning, deep learning, biomedical signal processing.</p>
       </div>
-      <a href="./Max-Tran-Resume-July-2026.pdf" target="_blank" class="btn btn-primary">Download PDF</a>
+      <a href="[LINK_TO_YOUR_RESUME_PDF]" target="_blank" class="btn btn-primary">Download PDF</a>
     </div>
   </div>
 </section>
@@ -674,7 +690,7 @@
       <span class="footer-text">max tran © 2026</span>
       <div class="footer-links">
         <a href="https://github.com/maxtran04" target="_blank">GitHub</a>
-        <a href="mailto:maxtran04@gmail.com">Email</a>
+        <a href="mailto:[your.email@example.com]">Email</a>
         <a href="https://linkedin.com/in/maxwell-tran" target="_blank">LinkedIn</a>
       </div>
     </div>
