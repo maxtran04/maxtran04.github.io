@@ -620,20 +620,29 @@
 
       <div class="project-card">
         <div class="project-title">ECG Arrhythmia Classification</div>
-        <p class="project-desc">Built a complete ECG beat classification pipeline in MATLAB to detect ectopic heartbeats. Applied bandpass and derivative filtering for QRS detection, extracted morphological and temporal features, and compared unsupervised K-means clustering against a supervised SVM classifier.</p>
-        <span class="project-metric">MATLAB · SVM · K-means · Signal Processing</span>
+        <p class="project-desc">Built a complete ECG beat classification pipeline in MATLAB to detect ectopic heartbeats. Applied bandpass and derivative filtering for QRS detection, extracted morphological and temporal features, and compared unsupervised K-means clustering against a supervised SVM classifier on a class-imbalanced dataset (40 ectopic vs 289 normal beats).</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <span class="project-metric">97.96% accuracy</span>
+          <span class="project-metric">83.33% sensitivity</span>
+        </div>
       </div>
 
       <div class="project-card">
         <div class="project-title">Automated Seizure Detection from EEG</div>
         <p class="project-desc">Implemented Shoeb's supervised learning pipeline on the CHB-MIT EEG dataset for patient-specific seizure detection. Designed an 8-band filter bank, extracted log energy features across 18 channels, and trained a weighted SVM with leave-one-seizure-out cross-validation and post-processing to reduce false positives.</p>
-        <span class="project-metric">MATLAB · SVM · Filter Bank · EEG</span>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <span class="project-metric">99.44% accuracy</span>
+          <span class="project-metric">99.64% specificity</span>
+        </div>
       </div>
 
       <div class="project-card">
         <div class="project-title">Neural Decoding of Visual Stimuli</div>
-        <p class="project-desc">Decoded visual stimuli from 290 simultaneously recorded neurons in the Allen Brain Atlas dataset. Built three multi-class SVM classifiers to predict grating orientation, temporal frequency, and their combination from neural fluorescence traces, validating each against shuffled baselines to confirm genuine learned representations.</p>
-        <span class="project-metric">MATLAB · Multi-class SVM · 290 Neurons · 41 Classes</span>
+        <p class="project-desc">Decoded visual stimuli from 290 simultaneously recorded neurons in the Allen Brain Atlas dataset. Built three multi-class SVM classifiers to predict grating orientation, temporal frequency, and their combination from neural fluorescence traces, comparing multiple feature engineering approaches and validating each against shuffled baselines.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <span class="project-metric">88.81% orientation accuracy</span>
+          <span class="project-metric">41 classes</span>
+        </div>
       </div>
 
       <div class="project-card">
